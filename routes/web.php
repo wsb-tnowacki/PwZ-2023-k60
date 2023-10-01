@@ -18,5 +18,8 @@ Route::get('/', function () {
 });
 
 Route::get('/kontakt', function () {
-    return view('kontakt');
+    return view('ogolny.kontakt');
+});
+Route::get('/onas', function () {
+    return view('ogolny.onas');
 });
