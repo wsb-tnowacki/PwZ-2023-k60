@@ -8,9 +8,12 @@
 @endsection
 @section('tresc')
 Tekst informacyjny o nas
-<ol>
+    @isset($zadania)
+    <ol>
     @foreach ($zadania as $zadanie)
         <li>{{ $zadanie }}</li>
     @endforeach
-</ol>
+    </ol>  
+    @endisset
+
 @endsection
