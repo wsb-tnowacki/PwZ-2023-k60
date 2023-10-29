@@ -75,6 +75,6 @@
   
 @endif
   <br>
-  <button type="submit" class="btn btn-primary">Dodaj posta</button>
+  <button type="submit" style="background-color: #0d6efd;" class="btn btn-primary">Dodaj posta</button>
 </form>
 @endsection

@@ -48,7 +48,7 @@ class PostController extends Controller
                 'email' => "Podaj prawidłowy email"
             ]
         ); */
-        return redirect()->route('posty.index')->with('message' , 'Dodano porawnie');
+        return redirect()->route('posty.index')->with('message' , 'Dodano poprawnie');
     }
 
     /**
