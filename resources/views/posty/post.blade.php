@@ -75,6 +75,8 @@
   
 @endif
   <br>
+  @auth
   <button type="submit" style="background-color: #0d6efd;" class="btn btn-primary">Dodaj posta</button>
+  @endauth
 </form>
 @endsection
