@@ -65,7 +65,11 @@ class PostController extends Controller
     public function show(string $id)
     {
         //
-        echo $id;
+        //echo $id;
+        $post = Posty::findOrFail($id);
+        //$post = new Posty();
+        //$post->findOrFail($id);
+        return view('posty.post', compact('post'));
     }
 
     /**
@@ -74,15 +78,26 @@ class PostController extends Controller
     public function edit(string $id)
     {
         //
-        echo $id;
+        //echo $id;
+        $post = Posty::findOrFail($id);
+        return view('posty.edit', compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    //public function update(Request $request, string $id)
+    public function update(PostStoreRequest $request, string $id)
     {
         //
+        //echo "Update: ".$id;
+        $post = Posty::findOrFail($id);
+        $post->tytul = request('tytul');
+        $post->autor = request('autor');
+        $post->email = request('email');
+        $post->tresc = request('tresc');
+        $post->update();
+        return redirect()->route('posty.index')->with('message', 'Uaktualniono poprawnie')->with('type', 'success');
     }
 
     /**
@@ -91,5 +106,9 @@ class PostController extends Controller
     public function destroy(string $id)
     {
         //
+        //echo "Delete: ".$id;
+        $post = Posty::findOrFail($id);
+        $post->delete();
+        return redirect()->route('posty.index')->with('message', 'Usunięto post poprawnie')->with('type', 'danger');
     }
 }
