@@ -10,30 +10,31 @@
 <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Lp</th>
+        <th scope="col">Tytuł</th>
+        <th scope="col">Autor</th>
+        <th scope="col">Data utworzenia</th>
       </tr>
     </thead>
+    @if ($posty->count())
+    @foreach ($posty as $post)
     <tbody>
       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
+        <th scope="row">{{ $post['id'] }}</th>
+        <td>{{ $post->tytul }}</td>
+        <td>{{ $post['autor'] }}</td>
+        <td>{{ date('j F Y H:i:s', strtotime($post->created_at)) }}</td>
       </tr>
     </tbody>
+    @endforeach
+   
+    @else
+    <tbody>
+      <tr>
+        <th class="text-center" scope="row" colspan="4">Nie ma żadnych postów</th>
+      </tr>
+    </tbody>
+    @endif
+    
   </table>
 @endsection

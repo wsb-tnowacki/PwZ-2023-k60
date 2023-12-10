@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PostStoreRequest;
 use Illuminate\Http\Request;
+use App\Models\Posty;
 
 class PostController extends Controller
 {
@@ -13,7 +14,8 @@ class PostController extends Controller
     public function index()
     {
         //
-        return view('posty.index');
+        $posty = Posty::all();
+        return view('posty.index', compact('posty'));
     }
 
     /**
@@ -48,6 +50,12 @@ class PostController extends Controller
                 'email' => "Podaj prawidłowy email"
             ]
         ); */
+        $posty = new Posty();
+        $posty->tytul = request('tytul');
+        $posty->autor = request('autor');
+        $posty->email = request('email');
+        $posty->tresc = request('tresc');
+        $posty->save();
         return redirect()->route('posty.index')->with('message' , 'Dodano poprawnie');
     }
 
