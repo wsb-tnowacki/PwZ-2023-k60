@@ -17,7 +17,8 @@ class PostyFactory extends Factory
     public function definition(): array
     {
         return [
-            //
-        ];
+            'tytul' => fake()->sentence(fake()->numberBetween(2,7)),'autor' => fake()->name(),
+            'email' => fake()->freeEmail(),'tresc' => fake()->text(),
+            'created_at' => fake()->dateTime()];
     }
 }

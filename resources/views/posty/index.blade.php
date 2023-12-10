@@ -28,17 +28,18 @@
         <td>{{ $post['autor'] }}</td>
         <td>{{ date('j F Y H:i:s', strtotime($post->created_at)) }}</td>
         @auth
-        <td><div><a href="{{ route('posty.edit', $post->id) }}"><button type="button" class="btn btn-primary m-1">E</button></a>
+        <td><div class="form-inline"><a class="form-inline" href="{{ route('posty.edit', $post->id) }}"><button type="button" class="btn btn-primary m-1">E</button></a><div>
           <form class="form-inline" action="{{ route('posty.destroy', $post->id) }}" method="post">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger m-1">X</button></form>
-          <div></td>
+          </td>
             @endauth
       </tr>
     </tbody>
+    
     @endforeach
-   
+    
     @else
     <tbody>
       <tr>
@@ -48,4 +49,5 @@
     @endif
     
   </table>
+  {{ $posty->links() }}
 @endsection

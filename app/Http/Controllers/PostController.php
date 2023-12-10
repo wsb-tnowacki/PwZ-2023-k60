@@ -19,6 +19,7 @@ class PostController extends Controller
     {
         //
         $posty = Posty::all();
+        $posty = Posty::paginate(5);
         return view('posty.index', compact('posty'));
     }
 
