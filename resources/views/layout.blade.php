@@ -82,7 +82,7 @@
 
                                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">@yield('podtytul', 'WSB')</h2>
                                 @if (session()->has('message'))
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <div class="alert alert-@if(session()->has('type')){{session()->get('type')}}@else {{ "success" }} @endif alert-dismissible fade show" role="alert">
                                     <strong>{{ session()->get('message') }}</strong>
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                   </div>

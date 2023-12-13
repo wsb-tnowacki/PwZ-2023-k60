@@ -61,7 +61,7 @@ class PostController extends Controller
         $posty->email = request('email');
         $posty->tresc = request('tresc');
         $posty->save();
-        return redirect()->route('posty.index')->with('message' , 'Dodano poprawnie');
+        return redirect()->route('posty.index')->with('message' , 'Dodano poprawnie')->with('type', 'success');
     }
 
     /**
